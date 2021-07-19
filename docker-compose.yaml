@@ -4,6 +4,8 @@ services:
     image: dremio/dremio-oss:latest
     container_name: dremio_local
     hostname: dremio
+    volumes:
+        - ~/data/dremio:/opt/dremio/data
     networks:
         - dremio_net
     ports:
@@ -11,6 +13,22 @@ services:
       - "31010:31010" # ODBC/JDBC clients
       - "2181:2181"   # ZooKeeper
       - "45678:45678" # Inter-node communication
+
+  minio:
+    image: minio/minio
+    container_name: minio_local
+    hostname: minio
+    volumes:
+        - ~/data/minio:/data
+    networks:
+        - dremio_net
+    ports:
+        - "9000:9000"   # API
+        - "9001:9001"   # CONSOLI UI
+    environment:
+        MINIO_ROOT_USER: 'minioadmin'
+        MINIO_ROOT_PASSWORD: 'minioadmin'
+    command: 'server /data --console-address ":9001"'
 
 networks:
     dremio_net:
