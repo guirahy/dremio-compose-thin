@@ -5,7 +5,9 @@ services:
     container_name: dremio_local
     hostname: dremio
     volumes:
-        - ~/data/dremio:/opt/dremio/data
+        - "~/data/dremio:/var/lib/dremio"
+        - "~/data/dremio:/localFiles"
+        - "~/data/dremio:/opt/dremio/data"
     networks:
         - dremio_net
     ports:
@@ -19,7 +21,7 @@ services:
     container_name: minio_local
     hostname: minio
     volumes:
-        - ~/data/minio:/data
+        - "~/data/minio:/data"
     networks:
         - dremio_net
     ports:
@@ -32,4 +34,3 @@ services:
 
 networks:
     dremio_net:
-      
