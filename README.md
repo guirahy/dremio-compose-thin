@@ -29,10 +29,10 @@ aws --endpoint-url http://127.0.0.1:9000 s3 ls --profile s3local
 https://docs.dremio.com/data-sources/s3/#configuring-s3-for-minio
 
 ### Create Datalake
-[<img src="img/step01.png">]
+<img src="img/step01.png">
 ### Select Source
-[<img src="img/step02.png">]
+<img src="img/step02.png">
 ### Connect Config
-[<img src="img/step03.png">]
+<img src="img/step03.png">
 ### Advanced Config
-[<img src="img/step04.png">]
+<img src="img/step04.png">
